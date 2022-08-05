@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Film {
 
@@ -42,6 +44,7 @@ public class Film {
 	}
 
 	@ManyToOne
+	@JsonIgnoreProperties("film")
 	@JoinColumn(name = "film")
 	public Regista getRegista() {
 		return regista;

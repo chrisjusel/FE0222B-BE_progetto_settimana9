@@ -1,7 +1,5 @@
 package com.cinemarest.dao.impl;
 
-import java.util.Date;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -45,8 +43,22 @@ public class RegistaDaoImpl implements RegistaDao {
 
 	@Override
 	public Regista getById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Regista regista = null;
+		em = JpaUtil.getEntityManagerFactory().createEntityManager();
+		EntityTransaction entityTransaction = em.getTransaction();
+		try {
+			// Salviamo la entity Cittadino
+			entityTransaction.begin();
+			regista = em.find(Regista.class, id);
+			entityTransaction.commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			entityTransaction.rollback();
+		} finally {
+			em.close();
+		}
+		return regista;
 	}
 
 }

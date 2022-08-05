@@ -1,5 +1,10 @@
 package com.cinemarest.dao;
 
-public class FilmDao {
+import com.cinemarest.dto.FilmDto;
+import com.cinemarest.model.Film;
 
+public interface FilmDao {
+
+	public Film save(FilmDto film);
+	
 }
