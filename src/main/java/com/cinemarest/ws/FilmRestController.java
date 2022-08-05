@@ -44,14 +44,15 @@ public class FilmRestController {
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		FilmDao filmDao = new FilmDaoImpl();
-		filmDao.delete(id);
-		return new ResponseEntity<String>("Eliminazione effettuata", HttpStatus.OK);
+		if(filmDao.delete(id))
+			return new ResponseEntity<String>("Eliminazione effettuata", HttpStatus.OK);
+		return new ResponseEntity<String>("Eliminazione non effettuata", HttpStatus.OK);
 	}
 	
 	@GetMapping("/getAllFilmsByIdRegista/{id}")
 	public List<Film> getAllByRegistaId(@PathVariable Long id) {
-		RegistaDao registaDao = new RegistaDaoImpl();
-		List<Film> films = registaDao.getAllFilmByRegista(id);
+		FilmDao filmDao = new FilmDaoImpl();
+		List<Film> films = filmDao.getAllFilmByRegistaId(id);
 		return films;
 	}
 }

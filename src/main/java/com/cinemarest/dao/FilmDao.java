@@ -10,9 +10,9 @@ public interface FilmDao {
 	public Film save(FilmDto film);
 	
 	public boolean delete(Long id);
-	
+		
 	public Film getById(Long id);
 	
-	public List<Film> getAllFilmByRegista(Long id);
+	public List<Film> getAllFilmByRegistaId(Long id);
 
 }

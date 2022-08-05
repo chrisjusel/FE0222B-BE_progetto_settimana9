@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,6 +53,14 @@ public class RegistaRestController {
 		if (registaDao.delete(id))
 			return new ResponseEntity<String>("Eliminazione effettuata", HttpStatus.OK);
 		return new ResponseEntity<String>("Eliminazione non effettuata", HttpStatus.OK);
+	}
+	
+	@PutMapping("/update")
+	public ResponseEntity<Regista> update(@RequestBody Regista regista) {
+		RegistaDao registaDao = new RegistaDaoImpl();
+		if (registaDao.update(regista))
+			return new ResponseEntity<Regista>(regista, HttpStatus.OK);
+		return new ResponseEntity<Regista>(new Regista(), HttpStatus.OK);
 	}
 
 }

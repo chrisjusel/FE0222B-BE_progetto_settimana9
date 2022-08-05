@@ -8,6 +8,8 @@ public interface RegistaDao {
 	public Regista save(Regista regista);
 
 	public boolean delete(Long id);
+	
+	public boolean update(Regista regista);
 
 	public Regista getById(Long id);
 

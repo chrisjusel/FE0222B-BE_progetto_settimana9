@@ -47,8 +47,8 @@ public class FilmDaoImpl implements FilmDao {
 
 		entityTransaction.begin();
 		Film film = em.find(Film.class, id);
-		if(film != null) {
-			em.remove(em.find(Film.class, id));
+		if (film != null) {
+			em.remove(film);
 			entityTransaction.commit();
 			em.close();
 			return true;
@@ -75,9 +75,9 @@ public class FilmDaoImpl implements FilmDao {
 		}
 		return film;
 	}
-	
+
 	@Override
-	public List<Film> getAllFilmByRegista(Long id) {
+	public List<Film> getAllFilmByRegistaId(Long id) {
 		em = JpaUtil.getEntityManagerFactory().createEntityManager();
 		List<Film> films = new ArrayList<Film>();
 		Query query = em.createQuery("SELECT f from Film f WHERE f.regista.id = :id");

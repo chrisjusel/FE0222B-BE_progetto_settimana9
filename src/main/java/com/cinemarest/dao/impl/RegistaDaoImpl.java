@@ -80,4 +80,26 @@ public class RegistaDaoImpl implements RegistaDao {
 		return registi;
 	}
 
+	@Override
+	public boolean update(Regista regista) {
+		boolean success = false;
+		em = JpaUtil.getEntityManagerFactory().createEntityManager();
+		EntityTransaction entityTransaction = em.getTransaction();
+
+		try {
+			entityTransaction.begin();
+			Regista registaToModify = em.find(Regista.class, regista.getId());
+			regista.setFilm(registaToModify.getFilm());
+			em.merge(regista);
+			entityTransaction.commit();
+			success = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			entityTransaction.rollback();
+		} finally {
+			em.close();
+		}
+		return success;
+	}
+
 }
