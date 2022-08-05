@@ -44,17 +44,20 @@ public class FilmDaoImpl implements FilmDao {
 	public boolean delete(Long id) {
 		em = JpaUtil.getEntityManagerFactory().createEntityManager();
 		EntityTransaction entityTransaction = em.getTransaction();
-
-		entityTransaction.begin();
-		Film film = em.find(Film.class, id);
-		if (film != null) {
-			em.remove(film);
+		boolean success = false;
+		try {
+			entityTransaction.begin();
+			Query query = em.createQuery("DELETE FROM Film f WHERE f.id = :id");
+			query.setParameter("id", id);
+			query.executeUpdate();
 			entityTransaction.commit();
-			em.close();
-			return true;
+			success = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			entityTransaction.rollback();
 		}
-		em.close();
-		return false;
+		return success;
+
 	}
 
 	@Override
