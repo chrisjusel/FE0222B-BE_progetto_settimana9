@@ -12,7 +12,7 @@ public class FilmDto {
 
 	private Long idRegista;
 
-	private int incasso;
+	private String incasso;
 
 	public Long getId() {
 		return id;
@@ -54,11 +54,11 @@ public class FilmDto {
 		this.idRegista = idRegista;
 	}
 
-	public int getIncasso() {
+	public String getIncasso() {
 		return incasso;
 	}
 
-	public void setIncasso(int incasso) {
+	public void setIncasso(String incasso) {
 		this.incasso = incasso;
 	}
 

@@ -23,7 +23,7 @@ public class Film {
 
 	private String tipo;
 
-	private int incasso;
+	private String incasso;
 
 	public Film() {
 	}
@@ -45,7 +45,7 @@ public class Film {
 
 	@ManyToOne
 	@JsonIgnoreProperties("film")
-	@JoinColumn(name = "film")
+	@JoinColumn(name = "regista_id")
 	public Regista getRegista() {
 		return regista;
 	}
@@ -55,7 +55,7 @@ public class Film {
 		return tipo;
 	}
 
-	public int getIncasso() {
+	public String getIncasso() {
 		return incasso;
 	}
 
@@ -79,7 +79,7 @@ public class Film {
 		this.tipo = tipo;
 	}
 
-	public void setIncasso(int incasso) {
+	public void setIncasso(String incasso) {
 		this.incasso = incasso;
 	}
 

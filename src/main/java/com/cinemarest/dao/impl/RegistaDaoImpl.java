@@ -1,9 +1,14 @@
 package com.cinemarest.dao.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 
 import com.cinemarest.dao.RegistaDao;
+import com.cinemarest.model.Film;
 import com.cinemarest.model.Regista;
 import com.cinemarest.util.JpaUtil;
 
@@ -30,14 +35,20 @@ public class RegistaDaoImpl implements RegistaDao {
 	}
 
 	@Override
-	public void delete(Long id) {
-		// TODO Auto-generated method stub
+	public boolean delete(Long id) {
+		em = JpaUtil.getEntityManagerFactory().createEntityManager();
+		EntityTransaction entityTransaction = em.getTransaction();
 
-	}
-
-	@Override
-	public void update(Regista regista) {
-		// TODO Auto-generated method stub
+		entityTransaction.begin();
+		Regista regista = em.find(Regista.class, id);
+		if (regista != null) {
+			em.remove(regista);
+			entityTransaction.commit();
+			em.close();
+			return true;
+		}
+		em.close();
+		return false;
 
 	}
 
@@ -47,7 +58,6 @@ public class RegistaDaoImpl implements RegistaDao {
 		em = JpaUtil.getEntityManagerFactory().createEntityManager();
 		EntityTransaction entityTransaction = em.getTransaction();
 		try {
-			// Salviamo la entity Cittadino
 			entityTransaction.begin();
 			regista = em.find(Regista.class, id);
 			entityTransaction.commit();
@@ -59,6 +69,15 @@ public class RegistaDaoImpl implements RegistaDao {
 			em.close();
 		}
 		return regista;
+	}
+
+	@Override
+	public List<Regista> getAll() {
+		em = JpaUtil.getEntityManagerFactory().createEntityManager();
+		List<Regista> registi = new ArrayList<Regista>();
+		Query query = em.createQuery("SELECT r from Regista r");
+		registi = query.getResultList();
+		return registi;
 	}
 
 }
