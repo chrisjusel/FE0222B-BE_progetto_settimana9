@@ -5,8 +5,8 @@
    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
       http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
    <persistence-unit name="Cinemarest">
-<!--        <class>com.cinemarest.model.ContoCorrente</class> -->
-<!--        <class>com.cinemarest.model.Movimento</class> -->
+       <class>com.cinemarest.model.Film</class>
+       <class>com.cinemarest.model.Regista</class>
       
        <properties>
            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
