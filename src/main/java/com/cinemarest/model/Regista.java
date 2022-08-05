@@ -52,7 +52,7 @@ public class Regista {
 	public Date getAnnoNascita() {
 		return annoNascita;
 	}
-	
+
 	@JsonIgnoreProperties("regista")
 	@OneToMany(mappedBy = "regista", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	public List<Film> getFilm() {

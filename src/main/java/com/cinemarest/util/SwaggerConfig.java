@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-@Api(value="ComuneDigitale", tags="Progetto per la gestione di conti corrente")
+@Api(value="Cinema Rest", tags="Progetto che espone metodi Rest per la gestione di Registi e Film")
 public class SwaggerConfig {
 
 	@Bean
@@ -29,12 +29,12 @@ public class SwaggerConfig {
 	private ApiInfo apiInfo() 
 	{
 		return new ApiInfoBuilder()
-				.title("Ewallet")
-                .description("Progetto per la gestione di conti corrente")
+				.title("Cinema Rest")
+                .description("Progetto che espone metodi Rest per la gestione di Registi e Film")
                 .version("1.0.0")
                 .license("Apache License Version 2.0")
                 .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
-                .contact(new Contact("Christian Vitale", "http://mySite.it", "christian00.vitale@gmail.com"))
+                .contact(new Contact("Christian Vitale", "https://scientify.it", "christian00.vitale@gmail.com"))
                 .build();
 	}
 }

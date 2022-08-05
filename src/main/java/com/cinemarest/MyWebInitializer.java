@@ -15,7 +15,7 @@ public class MyWebInitializer extends AbstractAnnotationConfigDispatcherServletI
 		return new Class[] { SpringWebConfig.class };
 	}
 
-	//Dichiariamo url del sito
+	// Dichiariamo url del sito
 	@Override
 	protected String[] getServletMappings() {
 		return new String[] { "/" };

@@ -27,9 +27,11 @@ import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping("/film")
-@Api(value = "FilmREst", tags = "Servizio rest per la gestione di film")
+@Api(value = "FilmRest", tags = "Gestione film")
 public class FilmRestController {
 
+	@ApiOperation(value = "Inserimento di un film", notes = "Dati i campi di un film, esso viene inserito", response = String.class, produces = "application/json")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Inserimento effettuata") })
 	@PostMapping("/inserisci")
 	public ResponseEntity<Film> save(@RequestBody FilmDto filmDto) {
 		FilmDao filmDao = new FilmDaoImpl();
@@ -39,6 +41,8 @@ public class FilmRestController {
 		return new ResponseEntity<Film>(new Film(), HttpStatus.OK);
 	}
 
+	@ApiOperation(value = "Recupero di un film tramite id", notes = "Dato l'id di un film, esso viene restituito", response = String.class, produces = "application/json")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Recupero effettuata") })
 	@GetMapping("/{id}")
 	public ResponseEntity<Film> getById(@PathVariable Long id) {
 		FilmDao filmDao = new FilmDaoImpl();
@@ -48,6 +52,8 @@ public class FilmRestController {
 		return new ResponseEntity<Film>(new Film(), HttpStatus.OK);
 	}
 
+	@ApiOperation(value = "Cancellazione di un film", notes = "Dato l'id di un film, esso viene eliminato", response = String.class, produces = "application/json")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Cancellazione effettuata") })
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		FilmDao filmDao = new FilmDaoImpl();
@@ -56,7 +62,7 @@ public class FilmRestController {
 		return new ResponseEntity<String>("Eliminazione non effettuata", HttpStatus.OK);
 	}
 
-	@ApiOperation(value = "Ricerca dei film di un regista", notes = "Dato l'id di un regista, si ottengono i suoi film", response = String.class, produces = "application/json")
+	@ApiOperation(value = "Ricerca dei film di un regista per id", notes = "Dato l'id di un regista, si ottengono i suoi film", response = String.class, produces = "application/json")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Recupero effettuato") })
 	@GetMapping("/getAllFilmsByIdRegista/{id}")
 	public List<Film> getAllByRegistaId(@PathVariable Long id) {
@@ -65,7 +71,7 @@ public class FilmRestController {
 		return films;
 	}
 
-	@ApiOperation(value = "Ricerca dei film di un regista", notes = "Dato il cognome di un regista, si ottengono i suoi film", response = String.class, produces = "application/json")
+	@ApiOperation(value = "Ricerca dei film di un regista per cognome", notes = "Dato il cognome di un regista, si ottengono i suoi film", response = String.class, produces = "application/json")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Recupero effettuato") })
 	@GetMapping("/searchFilmsBySurname")
 	public List<Film> searchFilmsBySurname(@RequestParam String search) {
