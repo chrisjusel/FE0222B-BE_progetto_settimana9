@@ -14,17 +14,18 @@ public class RegistaDaoImpl implements RegistaDao {
 	EntityManager em;
 
 	@Override
-	public void save(Regista regista) {
+	public Regista save(Regista regista) {
 		em = JpaUtil.getEntityManagerFactory().createEntityManager();
 		EntityTransaction entityTransaction = em.getTransaction();
 		try {
 			entityTransaction.begin();
 			em.persist(regista);
 			entityTransaction.commit();
-
+			return regista;
 		} catch (Exception e) {
 			e.printStackTrace();
 			entityTransaction.rollback();
+			return null;
 		} finally {
 			em.close();
 		}

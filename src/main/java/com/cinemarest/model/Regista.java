@@ -1,5 +1,6 @@
 package com.cinemarest.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class Regista {
 	private List<Film> film;
 
 	public Regista() {
+		film = new ArrayList<Film>();
 	}
 
 	@Id

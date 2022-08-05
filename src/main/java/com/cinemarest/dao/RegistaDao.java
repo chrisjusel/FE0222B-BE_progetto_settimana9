@@ -3,7 +3,7 @@ package com.cinemarest.dao;
 import com.cinemarest.model.Regista;
 
 public interface RegistaDao {
-	public void save(Regista regista);
+	public Regista save(Regista regista);
 
 	public void delete(Long id);
 
