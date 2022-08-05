@@ -89,7 +89,8 @@ public class RegistaDaoImpl implements RegistaDao {
 		try {
 			entityTransaction.begin();
 			Regista registaToModify = em.find(Regista.class, regista.getId());
-			regista.setFilm(registaToModify.getFilm());
+			if(registaToModify != null)
+				regista.setFilm(registaToModify.getFilm());
 			em.merge(regista);
 			entityTransaction.commit();
 			success = true;

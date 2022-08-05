@@ -89,4 +89,14 @@ public class FilmDaoImpl implements FilmDao {
 		return films;
 	}
 
+	@Override
+	public List<Film> searchFilmsBySurname(String ricerca) {
+		em = JpaUtil.getEntityManagerFactory().createEntityManager();
+		List<Film> films = new ArrayList<Film>();
+		Query query = em.createQuery("SELECT f from Film f WHERE f.regista.cognome LIKE :cognome");
+		query.setParameter("cognome", "%" + ricerca + "%");
+		films = query.getResultList();
+		return films;
+	}
+
 }

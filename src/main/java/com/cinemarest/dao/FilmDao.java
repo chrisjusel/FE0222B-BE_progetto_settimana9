@@ -15,4 +15,5 @@ public interface FilmDao {
 	
 	public List<Film> getAllFilmByRegistaId(Long id);
 
+	public List<Film> searchFilmsBySurname(String ricerca);
 }

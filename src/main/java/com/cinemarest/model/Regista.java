@@ -40,12 +40,12 @@ public class Regista {
 
 	@Column(nullable = false)
 	public String getNome() {
-		return nome;
+		return nome.toLowerCase();
 	}
 
 	@Column(nullable = false)
 	public String getCognome() {
-		return cognome;
+		return cognome.toLowerCase();
 	}
 
 	@Column(nullable = false)
