@@ -7,7 +7,8 @@ Alcune scelte sono state prese per puro scopo didattico, si troveranno maggiori 
 # Contenuti presenti
 - [Quadro generale](#Quadro-generale)
 - [Funzionalità principali](#Funzionalità-principali)
-- [Utilizzo API](#Utilizzo-API)
+- [Utilizzo API - Regista](#Utilizzo-API-Regista)
+- [Utilizzo API - Film](#Utilizzo-API-Film)
 - [Risorse Aggiuntive](#Risorse-Aggiuntive)
 
 ## Quadro generale
@@ -29,7 +30,7 @@ L'applicazione espone metodi REST all'utente per la gestione di film e registi
 
 Ciascuna di queste chiamate, rende persistenti, modifica, cancella o recupera dati da e sul database Postgres sottostante
 
-## Utilizzo API - Regista
+## Utilizzo API Regista
 ### Metodi GET
 - **Recupero tramite id**:  
   - /regista/{id_regista}
@@ -64,7 +65,7 @@ Ciascuna di queste chiamate, rende persistenti, modifica, cancella o recupera da
 }
 ```
 
-## Utilizzo API - Film
+## Utilizzo API Film
 ### Metodi GET
 - **Recupero dei film per id del regista**:  
   - /film/getAllFilmsByIdRegista/{id_regista}
