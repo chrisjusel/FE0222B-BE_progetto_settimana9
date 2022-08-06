@@ -1,0 +1,245 @@
+{
+	"info": {
+		"_postman_id": "1f873d25-fe6e-4c52-96fd-09fdd4b61bfb",
+		"name": "Cinema",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21022289"
+	},
+	"item": [
+		{
+			"name": "Regista",
+			"item": [
+				{
+					"name": "Inserisci",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nome\": \"Steven\",\r\n    \"cognome\": \"Spielberg\",\r\n    \"annoNascita\": 1946\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/FE0222B-BE_progetto_settimana9-1.0/regista/inserisci",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"FE0222B-BE_progetto_settimana9-1.0",
+								"regista",
+								"inserisci"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/FE0222B-BE_progetto_settimana9-1.0/regista/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"FE0222B-BE_progetto_settimana9-1.0",
+								"regista",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancella",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/FE0222B-BE_progetto_settimana9-1.0/regista/delete/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"FE0222B-BE_progetto_settimana9-1.0",
+								"regista",
+								"delete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/FE0222B-BE_progetto_settimana9-1.0/regista/getall",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"FE0222B-BE_progetto_settimana9-1.0",
+								"regista",
+								"getall"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : 1,\r\n    \"nome\" : \"Stefano\",\r\n    \"cognome\" : \"Spielberg\",\r\n    \"annoNascita\": 1982\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/FE0222B-BE_progetto_settimana9-1.0/regista/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"FE0222B-BE_progetto_settimana9-1.0",
+								"regista",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Film",
+			"item": [
+				{
+					"name": "Inserisci",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"titolo\": \"Le vie del mare\",\r\n    \"anno\": 1998,\r\n    \"tipo\": \"Sacro\",\r\n    \"idRegista\": 1,\r\n    \"incasso\": \"320000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/FE0222B-BE_progetto_settimana9-1.0/film/inserisci",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"FE0222B-BE_progetto_settimana9-1.0",
+								"film",
+								"inserisci"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancella",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/FE0222B-BE_progetto_settimana9-1.0/film/delete/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"FE0222B-BE_progetto_settimana9-1.0",
+								"film",
+								"delete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllFilmsByIdRegista",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/FE0222B-BE_progetto_settimana9-1.0/film/getAllFilmsByIdRegista/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"FE0222B-BE_progetto_settimana9-1.0",
+								"film",
+								"getAllFilmsByIdRegista",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "searchFilmsBySurname",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/FE0222B-BE_progetto_settimana9-1.0/film/searchFilmsBySurname?search=spielberg",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"FE0222B-BE_progetto_settimana9-1.0",
+								"film",
+								"searchFilmsBySurname"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "spielberg"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
