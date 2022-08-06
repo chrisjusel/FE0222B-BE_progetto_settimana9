@@ -46,7 +46,7 @@ Ciascuna di queste chiamate, rende persistenti, modifica, cancella o recupera da
     "cognome": "Spielberg",
     "annoNascita": 1946
 }
-
+```
 ### Metodi DELETE
 - **Cancellazione**:
   - /regista/delete/{id_regista}
@@ -54,7 +54,7 @@ Ciascuna di queste chiamate, rende persistenti, modifica, cancella o recupera da
 ### Metodi PUT
 - **Modifica**:
   - /regista/update
- ```
+```
  //request body
 {
     "id" : 1,
@@ -62,7 +62,32 @@ Ciascuna di queste chiamate, rende persistenti, modifica, cancella o recupera da
     "cognome" : "Spielberg",
     "annoNascita": 1982
 }
- ```
+```
+
+## Utilizzo API - Film
+### Metodi GET
+- **Recupero dei film per id del regista**:  
+  - /film/getAllFilmsByIdRegista/{id_regista}
+- **Recupero dei film per cognome del regista**:
+  - /film/searchFilmsBySurname?search={cognome}
+
+### Metodi POST
+- **Inserimento**:
+  - /film/inserisci
+```
+//request body
+{
+    "titolo": "Jurassic Park",
+    "anno": 1993,
+    "tipo": "Avventura",
+    "idRegista": 1,
+    "incasso": "1029153882"
+}
+```
+### Metodi DELETE
+- **Cancellazione**:
+  - /film/delete/{id}
+
  
  ## Risorse Aggiuntive
  E' fornito il file di esportazione di Postman contentente già la configurazione corretta dei metodi per poterli testare
