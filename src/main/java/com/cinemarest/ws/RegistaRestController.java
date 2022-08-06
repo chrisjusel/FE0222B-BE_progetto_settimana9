@@ -2,10 +2,8 @@ package com.cinemarest.ws;
 
 import java.util.List;
 
-import com.cinemarest.dao.FilmDao;
 import com.cinemarest.dao.RegistaDao;
 import com.cinemarest.dao.impl.RegistaDaoImpl;
-import com.cinemarest.model.Film;
 import com.cinemarest.model.Regista;
 
 import org.springframework.http.HttpStatus;
@@ -39,6 +37,12 @@ public class RegistaRestController {
 		return new ResponseEntity<Regista>(new Regista(), HttpStatus.OK);
 	}
 
+	/*
+	 * BUG NOTO: Quando il regista non è presente, non viene restituito nella
+	 * response un nuovo regista con tutti i campi a null come invece
+	 * progettualmente era stato deciso; Anche se l'oggetto regista è null, non
+	 * entra nell'ultimo return
+	 */
 	@ApiOperation(value = "Recupero di un regista tramite id", notes = "Dato l'id di un regista, esso viene restituito", response = String.class, produces = "application/json")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Recupero effettuato") })
 	@GetMapping("/{id}")
@@ -69,6 +73,11 @@ public class RegistaRestController {
 		return regista;
 	}
 
+	/*
+	 * BUG NOTO: Quando il regista non è presente, non viene restituito nella
+	 * response un nuovo regista con tutti i campi a null come invece
+	 * progettualmente era stato deciso;
+	 */
 	@ApiOperation(value = "Modifica di un regista", notes = "Dati i dati di un regista, ed il suo id, esso verrà modificato", response = String.class, produces = "application/json")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "Modifica effettuata") })
 	@PutMapping("/update")

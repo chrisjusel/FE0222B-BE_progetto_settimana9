@@ -1,3 +1,6 @@
+/**
+ * Classe contenente i metodi crud
+ */
 package com.cinemarest.dao.impl;
 
 import java.util.ArrayList;
@@ -17,8 +20,11 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 
 public class FilmDaoImpl implements FilmDao {
 
-	EntityManager em;
+	private EntityManager em;
 
+	/**
+	 * Restituisce il film se creato correttamente, null altrimenti
+	 */
 	@Override
 	public Film save(FilmDto filmDto) {
 		Film film = DtoConverter.toEntity(filmDto);
@@ -40,6 +46,9 @@ public class FilmDaoImpl implements FilmDao {
 		}
 	}
 
+	/**
+	 * Restituisce true se il film da eliminare è stato trovato, false altrimenti
+	 */
 	@Override
 	public boolean delete(Long id) {
 		em = JpaUtil.getEntityManagerFactory().createEntityManager();
@@ -47,11 +56,12 @@ public class FilmDaoImpl implements FilmDao {
 		boolean success = false;
 		try {
 			entityTransaction.begin();
-			Query query = em.createQuery("DELETE FROM Film f WHERE f.id = :id");
-			query.setParameter("id", id);
-			query.executeUpdate();
-			entityTransaction.commit();
-			success = true;
+			Film film = em.find(Film.class, id);
+			if (film != null) {
+				em.remove(film);
+				entityTransaction.commit();
+				success = true;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			entityTransaction.rollback();
@@ -60,6 +70,9 @@ public class FilmDaoImpl implements FilmDao {
 
 	}
 
+	/**
+	 * Restituisce il film se è stato trovato, null altrimenti
+	 */
 	@Override
 	public Film getById(Long id) {
 		Film film = null;
@@ -79,6 +92,9 @@ public class FilmDaoImpl implements FilmDao {
 		return film;
 	}
 
+	/**
+	 * Restituisce una lista contente i film trovati, una lista vuota altrimenti
+	 */
 	@Override
 	public List<Film> getAllFilmByRegistaId(Long id) {
 		em = JpaUtil.getEntityManagerFactory().createEntityManager();
@@ -89,12 +105,15 @@ public class FilmDaoImpl implements FilmDao {
 		return films;
 	}
 
+	/**
+	 * Restituisce una lista contente i film trovati, una lista vuota altrimenti
+	 */
 	@Override
 	public List<Film> searchFilmsBySurname(String ricerca) {
 		em = JpaUtil.getEntityManagerFactory().createEntityManager();
 		List<Film> films = new ArrayList<Film>();
 		Query query = em.createQuery("SELECT f from Film f WHERE f.regista.cognome LIKE :cognome");
-		query.setParameter("cognome", "%" + ricerca + "%");
+		query.setParameter("cognome", "%" + ricerca.toLowerCase() + "%");
 		films = query.getResultList();
 		return films;
 	}

@@ -1,3 +1,8 @@
+/**
+ * Il compito di questa classe è fornire all'utente una sorta di interfaccia per poter
+ * inserire un film riferendosi semplicemente all'id di un regista senza dover specificare
+ * tutti i suoi campi
+ */
 package com.cinemarest.dto;
 
 public class FilmDto {

@@ -1,3 +1,9 @@
+/**
+ * Entità regista, relazione uno a molti con l'entità film:
+ * un film può avere un solo regista (assunzione a solo scopo didattico, per semplificare,
+ * nella realtà un film può avere anche più di un regista, in quel caso sarebbe dovuta esserci
+ * una relazione molti a molti tra film e regista)
+ */
 package com.cinemarest.model;
 
 import java.util.ArrayList;
@@ -24,7 +30,7 @@ public class Regista {
 
 	private String cognome;
 
-	private Date annoNascita;
+	private int annoNascita;
 
 	private List<Film> film;
 
@@ -49,7 +55,7 @@ public class Regista {
 	}
 
 	@Column(nullable = false)
-	public Date getAnnoNascita() {
+	public int getAnnoNascita() {
 		return annoNascita;
 	}
 
@@ -71,7 +77,7 @@ public class Regista {
 		this.cognome = cognome;
 	}
 
-	public void setAnnoNascita(Date annoNascita) {
+	public void setAnnoNascita(int annoNascita) {
 		this.annoNascita = annoNascita;
 	}
 

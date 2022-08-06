@@ -1,3 +1,7 @@
+/**
+ * Entità film, relazione molti a uno con l'entità regista:
+ * un regista può aver girato più film
+ */
 package com.cinemarest.model;
 
 import javax.persistence.Column;
@@ -8,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity

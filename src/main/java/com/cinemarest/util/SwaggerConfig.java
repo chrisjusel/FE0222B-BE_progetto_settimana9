@@ -1,3 +1,6 @@
+/**
+ * Settings Swagger
+ */
 package com.cinemarest.util;
 
 import org.springframework.context.annotation.Bean;

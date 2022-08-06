@@ -1,3 +1,8 @@
+/**
+ * Questa classe di servizio ha il compito di assegnare tutti i dati di un regista
+ * ad un determinato film fornendo semplicemente l'id del regista a cui ci si vuole
+ * riferire
+ */
 package com.cinemarest.util;
 
 import com.cinemarest.dao.RegistaDao;

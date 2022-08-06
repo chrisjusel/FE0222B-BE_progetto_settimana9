@@ -1,3 +1,6 @@
+/**
+ * Classe contente i metodi crud
+ */
 package com.cinemarest.dao.impl;
 
 import java.util.ArrayList;
@@ -8,14 +11,16 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import com.cinemarest.dao.RegistaDao;
-import com.cinemarest.model.Film;
 import com.cinemarest.model.Regista;
 import com.cinemarest.util.JpaUtil;
 
 public class RegistaDaoImpl implements RegistaDao {
 
-	EntityManager em;
+	private EntityManager em;
 
+	/**
+	 * Restituisce il regista se è stato correttamente creato, null altrimenti
+	 */
 	@Override
 	public Regista save(Regista regista) {
 		em = JpaUtil.getEntityManagerFactory().createEntityManager();
@@ -34,6 +39,9 @@ public class RegistaDaoImpl implements RegistaDao {
 		}
 	}
 
+	/**
+	 * Restituisce true se il regista da modificare è stato trovato, falso altrimenti
+	 */
 	@Override
 	public boolean delete(Long id) {
 		em = JpaUtil.getEntityManagerFactory().createEntityManager();
@@ -52,6 +60,9 @@ public class RegistaDaoImpl implements RegistaDao {
 
 	}
 
+	/**
+	 * Restituisce il regista se è stato trovato, null altrimenti
+	 */
 	@Override
 	public Regista getById(Long id) {
 		Regista regista = null;
@@ -61,7 +72,6 @@ public class RegistaDaoImpl implements RegistaDao {
 			entityTransaction.begin();
 			regista = em.find(Regista.class, id);
 			entityTransaction.commit();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			entityTransaction.rollback();
@@ -71,6 +81,9 @@ public class RegistaDaoImpl implements RegistaDao {
 		return regista;
 	}
 
+	/**
+	 * Restituisce una lista di registi se presenti, una lista vuota altrimenti
+	 */
 	@Override
 	public List<Regista> getAll() {
 		em = JpaUtil.getEntityManagerFactory().createEntityManager();
@@ -80,6 +93,11 @@ public class RegistaDaoImpl implements RegistaDao {
 		return registi;
 	}
 
+	/*
+	 * Restituisce true se il regista da modificare è stato trovato, falso altrimenti
+	 * 
+	 * @see com.cinemarest.dao.RegistaDao#update(com.cinemarest.model.Regista)
+	 */
 	@Override
 	public boolean update(Regista regista) {
 		boolean success = false;
@@ -89,11 +107,15 @@ public class RegistaDaoImpl implements RegistaDao {
 		try {
 			entityTransaction.begin();
 			Regista registaToModify = em.find(Regista.class, regista.getId());
-			if(registaToModify != null)
+
+			if (registaToModify != null) {
 				regista.setFilm(registaToModify.getFilm());
-			em.merge(regista);
+				em.merge(regista);
+				success = true;
+			}
+
 			entityTransaction.commit();
-			success = true;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			entityTransaction.rollback();
