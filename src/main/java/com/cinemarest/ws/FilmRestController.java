@@ -3,9 +3,7 @@ package com.cinemarest.ws;
 import java.util.List;
 
 import com.cinemarest.dao.FilmDao;
-import com.cinemarest.dao.RegistaDao;
 import com.cinemarest.dao.impl.FilmDaoImpl;
-import com.cinemarest.dao.impl.RegistaDaoImpl;
 import com.cinemarest.dto.FilmDto;
 import com.cinemarest.model.Film;
 
