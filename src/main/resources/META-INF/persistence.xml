@@ -15,7 +15,9 @@
            <property name="javax.persistence.jdbc.password" value="admin" />
            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
            <property name="hibernate.default_schema" value="public" />
-           <property name="hibernate.hbm2ddl.auto" value="create" /> <!-- mettere poi create -->
+           <property name="hibernate.hbm2ddl.auto" value="none" /> <!-- modificare per cambiare il tipo di persistenza
+           																create - ricrea le tabelle ad ogni avvio del server 
+           																none - normale persistenza -->
       
            <property name="hibernate.show_sql" value="true"/>
            <property name="hibernate.format_sql" value="true"/>       
