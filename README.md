@@ -3,7 +3,7 @@
 Questo è un semplice progetto per prendere dimestichezza con le tecnologie REST fornite da Spring in ausilio dell'application server Wildfly.
 E'presente lo strato di persistenza su database PostgreSQL implementato attraverso il framework ORM Hibernate.
 Alcune scelte sono state prese per puro scopo didattico, si troveranno maggiori informazioni nelle classi interessate.
-Tutti i metodi che l'API espone sono documentati con Swagger la quale documentazione e visibile all'URL /swagger-ui.html.
+Tutti i metodi che l'API espone sono documentati con Swagger la quale documentazione è visibile all'URL /swagger-ui.html.
 
 # Contenuti presenti
 - [Quadro generale](#Quadro-generale)
